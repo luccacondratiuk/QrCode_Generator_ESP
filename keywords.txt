@@ -3,7 +3,7 @@
 
 bool	KEYWORD1
 uint8_t	KEYWORD1
-QRCode	KEYWORD1
+QRCodeGenerator	KEYWORD1
 
 
 # Methods and Functions (KEYWORD2)

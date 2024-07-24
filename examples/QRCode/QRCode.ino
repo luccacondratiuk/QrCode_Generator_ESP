@@ -9,19 +9,20 @@
  *
  */
 
-#include "qrcode.h"
+#include "qrcode_generator.h"
 
-void setup() {
+void setup()
+{
     Serial.begin(115200);
 
     // Start time
     uint32_t dt = millis();
-  
+
     // Create the QR code
-    QRCode qrcode;
+    QRCodeGenerator qrcode;
     uint8_t qrcodeData[qrcode_getBufferSize(3)];
     qrcode_initText(&qrcode, qrcodeData, 3, 0, "HELLO WORLD");
-  
+
     // Delta time
     dt = millis() - dt;
     Serial.print("QR Code Generation Time: ");
@@ -31,17 +32,18 @@ void setup() {
     // Top quiet zone
     Serial.print("\n\n\n\n");
 
-    for (uint8_t y = 0; y < qrcode.size; y++) {
+    for (uint8_t y = 0; y < qrcode.size; y++)
+    {
 
         // Left quiet zone
         Serial.print("        ");
 
         // Each horizontal module
-        for (uint8_t x = 0; x < qrcode.size; x++) {
+        for (uint8_t x = 0; x < qrcode.size; x++)
+        {
 
             // Print each module (UTF-8 \u2588 is a solid block)
-            Serial.print(qrcode_getModule(&qrcode, x, y) ? "\u2588\u2588": "  ");
-
+            Serial.print(qrcode_getModule(&qrcode, x, y) ? "\u2588\u2588" : "  ");
         }
 
         Serial.print("\n");
@@ -51,6 +53,6 @@ void setup() {
     Serial.print("\n\n\n\n");
 }
 
-void loop() {
-
+void loop()
+{
 }
